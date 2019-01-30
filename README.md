@@ -27,5 +27,7 @@ I primarily started this project to learn about flutter and built it last night 
 
 # Screenshots 📱
 ![screenshot](/screenshots/01.jpg?raw=true "Timeline")
+***
 ![screenshot](/screenshots/02.jpg?raw=true "Hackernews")
+***
 ![screenshot](/screenshots/03.jpg?raw=true "GitHub")
