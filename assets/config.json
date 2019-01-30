@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "name": "github",
+      "url": "https://github-trending-api.now.sh/repositories"
+    },
+    {
+      "name": "test1"
+    }
+  ]
+}

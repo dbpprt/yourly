@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yourly/components/menu.component.dart';
+import 'package:yourly/pages/generic_article_page.dart';
 import 'package:yourly/pages/github_trending.page.dart';
 import 'package:yourly/pages/hackernews.page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 2,
       initialIndex: 1,
       child: Scaffold(
         appBar: AppBar(
@@ -49,26 +49,25 @@ class HomePage extends StatelessWidget {
             isScrollable: true,
             tabs: [
               Tab(child: tab("Timeline", FontAwesomeIcons.history)),
-              Tab(child: tab("HN", FontAwesomeIcons.yCombinator)),
-              Tab(child: tab("Trending", FontAwesomeIcons.github)),
-              Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
-              Tab(child: tab("Trending Dart", FontAwesomeIcons.github)),
+              Tab(child: tab("Github", FontAwesomeIcons.github)),
+              // Tab(child: tab("Trending", FontAwesomeIcons.github)),
+              // Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
+              // Tab(child: tab("Trending Dart", FontAwesomeIcons.github)),
             ],
           ),
           title: Text('Yourly'),
         ),
-        drawer: Menu(),
         body: TabBarView(
           children: [
             TimelinePage(),
-            HackerNewsPage(),
-            GithubTrendingPage(),
-            GithubTrendingPage(
-              language: 'c%23',
-            ),
-            GithubTrendingPage(
-              language: 'dart',
-            ),
+            GenericArticlePage(articleProviderName: "github"),
+            // GithubTrendingPage(),
+            // GithubTrendingPage(
+            //   language: 'c%23',
+            // ),
+            // GithubTrendingPage(
+            //   language: 'dart',
+            // ),
           ],
         ),
       ),
