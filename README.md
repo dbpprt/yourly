@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/dennisbappert/yourly/master/assets/web_hi_res_512.png" width="30" height="30"> Yourly [![Build status](https://bappert.visualstudio.com/Yourly/_apis/build/status/android)](https://bappert.visualstudio.com/Yourly/_build/latest?definitionId=13)
+# <img src="https://raw.githubusercontent.com/dennisbappert/yourly/master/assets/web_hi_res_512.png" width="30" height="30"> Yourly [![Build status](https://bappert.visualstudio.com/Yourly/_apis/build/status/android)](https://bappert.visualstudio.com/Yourly/_build/latest?definitionId=13) [![deployment](https://bappert.vsrm.visualstudio.com/_apis/public/Release/badge/dd6f6506-814e-45b9-96b0-ab97573a4f71/1/1)](https://bappert.visualstudio.com/Yourly/_release?definitionId=1)
 
 ## Motivation 🤔
 I read the same pages every morning and so far I have not found a good news reader and always fall back to use chrome at the end of the day. There are many articles that I temporarily store and read in the office, for example. So I built yourly - a very simple news reader for my favorite platforms including options to store articles.
