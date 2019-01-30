@@ -19,6 +19,7 @@ I read the same pages every morning and so far I have not found a good news read
 - Push to PlayStore
 - Implement CI builds
 - Add a release to GitHub releases
+- Simple web interface to access all saved articles
 - ~~(basic understanding how flutter works)~~
 
 # Warning ⚠️
