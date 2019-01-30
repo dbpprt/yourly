@@ -26,3 +26,8 @@ I read the same pages every morning and so far I have not found a good news read
 I primarily started this project to learn about flutter and built it last night in a few hours so the code-quality might not be the best.
 
 # Screenshots 📱
+![screenshot](/screenshots/01.jpg?raw=true "Timeline")
+***
+![screenshot](/screenshots/02.jpg?raw=true "Hackernews")
+***
+![screenshot](/screenshots/03.jpg?raw=true "GitHub")
