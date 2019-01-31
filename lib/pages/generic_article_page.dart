@@ -3,9 +3,7 @@ import 'package:yourly/bloc/article_bloc.dart';
 import 'package:yourly/bloc/article_event.dart';
 import 'package:yourly/bloc/article_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yourly/components/bottomloader.component.dart';
-import 'package:yourly/components/github_trending_article.component.dart';
-import 'package:yourly/models/github_trending_article.dart' as model;
+import 'package:yourly/components/components.dart';
 import 'package:yourly/providers/provider_registry.dart';
 
 class GenericArticlePage extends StatefulWidget {
@@ -20,15 +18,21 @@ class GenericArticlePage extends StatefulWidget {
 }
 
 class _GenericArticlePageState extends State<GenericArticlePage> {
+  _GenericArticlePageState({this.articleProviderName}) {
+    _scrollController.addListener(_onScroll);
+  }
+
   String articleProviderName;
-  Provider _provider;
 
   ArticleBloc _articleBloc;
+  Provider _provider;
   final _scrollController = ScrollController();
   final _scrollThreshold = 200.0;
 
-  _GenericArticlePageState({this.articleProviderName}) {
-    _scrollController.addListener(_onScroll);
+  @override
+  void dispose() {
+    _articleBloc.dispose();
+    super.dispose();
   }
 
   @override
@@ -46,6 +50,21 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
         _provider = provider;
       });
     })();
+  }
+
+  Future<Null> _handleRefresh() async {
+    await new Future.delayed(new Duration(milliseconds: 500));
+    _articleBloc.dispatch(Reset());
+    await new Future.delayed(new Duration(milliseconds: 500));
+    _articleBloc.dispatch(Fetch());
+  }
+
+  void _onScroll() {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    if (maxScroll - currentScroll <= _scrollThreshold) {
+      _articleBloc.dispatch(Fetch());
+    }
   }
 
   @override
@@ -80,9 +99,7 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
                 itemBuilder: (BuildContext context, int index) {
                   return index >= state.articles.length
                       ? BottomLoader()
-                      : GithubTrendingArticle(
-                          post: model.GithubTrendingArticle.fromRawObject(
-                              state.articles[index]));
+                      : _provider.api.render(context, state.articles[index]);
                 },
                 itemCount: state.hasReachedMax
                     ? state.articles.length
@@ -95,26 +112,5 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
         onRefresh: _handleRefresh,
       ),
     );
-  }
-
-  Future<Null> _handleRefresh() async {
-    await new Future.delayed(new Duration(milliseconds: 500));
-    _articleBloc.dispatch(Reset());
-    await new Future.delayed(new Duration(milliseconds: 500));
-    _articleBloc.dispatch(Fetch());
-  }
-
-  @override
-  void dispose() {
-    _articleBloc.dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.position.pixels;
-    if (maxScroll - currentScroll <= _scrollThreshold) {
-      _articleBloc.dispatch(Fetch());
-    }
   }
 }

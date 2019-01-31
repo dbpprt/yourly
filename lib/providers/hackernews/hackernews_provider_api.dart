@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:yourly/config.dart';
 import 'package:yourly/providers/abstract_provider_api.dart';
 import 'package:http/http.dart' as http;
-import 'package:yourly/providers/github/github.dart';
+import 'package:yourly/providers/hackernews/hackernews.dart';
 
-class GithubTrendingProviderApi extends AbstractProviderApi {
+class HackernewsProviderApi extends AbstractProviderApi {
   static final http.Client httpClient = http.Client();
 
-  GithubTrendingProviderApi(ArticleProviderConfiguration configuration)
+  HackernewsProviderApi(ArticleProviderConfiguration configuration)
       : super(configuration: configuration);
 
   @override
@@ -18,7 +18,7 @@ class GithubTrendingProviderApi extends AbstractProviderApi {
       return List<dynamic>();
     }
 
-    final url = configuration.url;
+    final url = configuration.url.replaceAll("{page}", page.toString());
 
     final response = await httpClient.get(url);
     if (response.statusCode == 200) {
@@ -31,7 +31,7 @@ class GithubTrendingProviderApi extends AbstractProviderApi {
 
   @override
   Widget render(BuildContext buildContext, rawObject) {
-    return GithubTrendingArticleComponent(
-        model: GithubTrendingArticleModel.fromRawObject(rawObject));
+    return HackernewsArticleComponent(
+        model: HackernewsArticleModel.fromRawObject(rawObject));
   }
 }

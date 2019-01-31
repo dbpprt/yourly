@@ -1,21 +1,13 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:yourly/database/common/database_provider.dart';
-import 'package:yourly/database/entities/saved_article.dart';
-import 'package:yourly/database/saved_article_database_repository.dart';
-import 'package:yourly/models/github_trending_article.dart' as model;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:yourly/providers/github/github_trending_article_model.dart';
 
-class GithubTrendingArticle extends StatelessWidget {
-  final model.GithubTrendingArticle post;
+class GithubTrendingArticleComponent extends StatelessWidget {
+  final GithubTrendingArticleModel model;
   final GestureTapCallback onDoubleTap;
 
-  const GithubTrendingArticle({Key key, @required this.post, this.onDoubleTap})
+  const GithubTrendingArticleComponent(
+      {Key key, @required this.model, this.onDoubleTap})
       : super(key: key);
 
   static int _getColorFromHex(String hexColor) {
@@ -29,7 +21,7 @@ class GithubTrendingArticle extends StatelessWidget {
     return int.parse(hexColor, radix: 16);
   }
 
-  Widget actionRow(model.GithubTrendingArticle post) => Padding(
+  Widget actionRow(GithubTrendingArticleModel post) => Padding(
         padding: const EdgeInsets.only(right: 30.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,7 +122,7 @@ class GithubTrendingArticle extends StatelessWidget {
         ),
       );
 
-  Widget rightColumn(model.GithubTrendingArticle post) => Expanded(
+  Widget rightColumn(GithubTrendingArticleModel post) => Expanded(
         child: Padding(
           padding: const EdgeInsets.only(left: 16.0, right: 4.0),
           child: Column(
@@ -173,76 +165,36 @@ class GithubTrendingArticle extends StatelessWidget {
         ),
       );
 
-  Future<void> _save() async {
-    await SavedArticlesDatabaseRepository(DatabaseProvider.get).insert(
-        SavedArticle("github", json.encode(post.rawObject),
-            DateTime.now().millisecondsSinceEpoch, post.url));
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Card(
-        color: Colors.grey.shade900,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  CircleAvatar(
-                      radius: 25.0,
-                      backgroundImage: NetworkImage(
-                        post.builtByAvatar
-                                .replaceAll("github.com", "github.com.rsz.io") +
-                            '?width=30',
-                      )),
-                  rightColumn(post),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 30),
-                child: actionRow(post),
-              ),
-            ],
-          ),
+        child: Card(
+      color: Colors.grey.shade900,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                CircleAvatar(
+                    radius: 25.0,
+                    backgroundImage: NetworkImage(
+                      model.builtByAvatar
+                              .replaceAll("github.com", "github.com.rsz.io") +
+                          '?width=30',
+                    )),
+                rightColumn(model),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: actionRow(model),
+            ),
+          ],
         ),
       ),
-      onTap: () {
-        launch(post.url);
-      },
-      onDoubleTap: () async {
-        if (onDoubleTap != null) {
-          return onDoubleTap();
-        }
-
-        HapticFeedback.vibrate();
-
-        await _save();
-
-        Fluttertoast.showToast(
-            msg: "Archived",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIos: 1,
-            textColor: Colors.black,
-            fontSize: 16.0);
-      },
-      onLongPress: () {
-        HapticFeedback.vibrate();
-        Navigator.of(context).push(
-          new MaterialPageRoute(
-            builder: (BuildContext context) => WebviewScaffold(
-                  url: post.url,
-                  appBar: new AppBar(
-                    title: new Text(post.name),
-                  ),
-                ),
-          ),
-        );
-      },
-    );
+    ));
   }
 }

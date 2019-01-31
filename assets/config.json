@@ -1,11 +1,18 @@
 {
   "providers": [
     {
-      "name": "github",
-      "url": "https://github-trending-api.now.sh/repositories"
+      "provider": "github",
+      "name": "github-trending",
+      "url": "https://github-trending-api.now.sh/repositories",
+      "displayName": "Trending",
+      "icon": "github"
     },
     {
-      "name": "test1"
+      "provider": "hackernews",
+      "name": "hackernews-news",
+      "url": "https://api.hnpwa.com/v0/news/{page}.json",
+      "displayName": "HN",
+      "icon": "ycombinator"
     }
   ]
 }

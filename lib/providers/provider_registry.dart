@@ -2,6 +2,7 @@ import 'dart:async' show Future;
 import 'package:yourly/config.dart';
 import 'package:yourly/providers/abstract_provider_api.dart';
 import 'package:yourly/providers/github/github.dart';
+import 'package:yourly/providers/hackernews/hackernews.dart';
 
 class Provider {
   AbstractProviderApi api;
@@ -11,21 +12,42 @@ class Provider {
 
 class ProviderRegistry {
   static final _instance = ProviderRegistry._internal();
-  static ProviderRegistry get = _instance;
-  bool isInitialized = false;
 
   ProviderRegistry._internal();
 
-  Future<Provider> resolve(String name) async {
-    final config = await ConfigurationProvider.get.config();
-    final providerConfiguration =
-        config.providers.where((_) => _.name == name).single;
+  static ProviderRegistry get = _instance;
 
-    switch (name) {
-      case 'github':
-        return Provider(
-          api: GithubTrendingProviderApi(providerConfiguration),
-        );
+  bool isInitialized = false;
+
+  final Map<String, Provider> _providers = new Map();
+
+  Future<void> _init() async {
+    final config = await ConfigurationProvider.get.config();
+
+    for (var providerConfig in config.providers) {
+      switch (providerConfig.provider) {
+        case "github":
+          _providers.putIfAbsent(providerConfig.name, () {
+            return Provider(api: GithubTrendingProviderApi(providerConfig));
+          });
+          break;
+
+        case "hackernews":
+          _providers.putIfAbsent(providerConfig.name, () {
+            return Provider(api: HackernewsProviderApi(providerConfig));
+          });
+          break;
+      }
+    }
+
+    isInitialized = true;
+  }
+
+  Future<Provider> resolve(String name) async {
+    if (!isInitialized) await _init();
+
+    if (_providers.containsKey(name)) {
+      return _providers[name];
     }
 
     throw Exception("unknown provider $name");

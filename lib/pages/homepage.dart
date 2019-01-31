@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yourly/pages/generic_article_page.dart';
-import 'package:yourly/pages/github_trending.page.dart';
-import 'package:yourly/pages/hackernews.page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:yourly/pages/timeline.page.dart';
+import 'package:yourly/pages/timeline.dart';
 
-class HomePage extends StatelessWidget {
+class Homepage extends StatelessWidget {
   Widget tab(String text, IconData icon) {
     return Row(
       children: <Widget>[
@@ -48,8 +46,9 @@ class HomePage extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              Tab(child: tab("Timeline", FontAwesomeIcons.history)),
+              //Tab(child: tab("Timeline", FontAwesomeIcons.history)),
               Tab(child: tab("Github", FontAwesomeIcons.github)),
+              Tab(child: tab("Hackernews", FontAwesomeIcons.yCombinator)),
               // Tab(child: tab("Trending", FontAwesomeIcons.github)),
               // Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
               // Tab(child: tab("Trending Dart", FontAwesomeIcons.github)),
@@ -59,8 +58,13 @@ class HomePage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            TimelinePage(),
-            GenericArticlePage(articleProviderName: "github"),
+            //TimelinePage(),
+            GenericArticlePage(
+              articleProviderName: "github-trending",
+            ),
+            GenericArticlePage(
+              articleProviderName: "hackernews-news",
+            )
             // GithubTrendingPage(),
             // GithubTrendingPage(
             //   language: 'c%23',
