@@ -1,11 +1,12 @@
 import 'package:yourly/database/common/database_provider.dart';
-import 'package:yourly/database/entities/saved_article.dart';
-import 'package:yourly/database/saved_article_dao.dart';
+import 'package:yourly/database/saved_articles/saved_article.dart';
+import 'package:yourly/database/saved_articles/saved_article_dao.dart';
 
 class SavedArticlesDatabaseRepository {
+  SavedArticlesDatabaseRepository(this.databaseProvider);
+
   final dao = SavedArticleDao();
   DatabaseProvider databaseProvider;
-  SavedArticlesDatabaseRepository(this.databaseProvider);
 
   Future<SavedArticle> insert(SavedArticle note) async {
     final db = await databaseProvider.db();

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:yourly/components/menu.component.dart';
-import 'package:yourly/pages/github_trending.page.dart';
-import 'package:yourly/pages/hackernews.page.dart';
+import 'package:yourly/pages/generic_article_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:yourly/pages/timeline.page.dart';
 
-class HomePage extends StatelessWidget {
+class Homepage extends StatelessWidget {
   Widget tab(String text, IconData icon) {
     return Row(
       children: <Widget>[
@@ -49,7 +46,7 @@ class HomePage extends StatelessWidget {
             isScrollable: true,
             tabs: [
               Tab(child: tab("Timeline", FontAwesomeIcons.history)),
-              Tab(child: tab("HN", FontAwesomeIcons.yCombinator)),
+              Tab(child: tab("Hackernews", FontAwesomeIcons.yCombinator)),
               Tab(child: tab("Trending", FontAwesomeIcons.github)),
               Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
               Tab(child: tab("Trending Dart", FontAwesomeIcons.github)),
@@ -57,18 +54,31 @@ class HomePage extends StatelessWidget {
           ),
           title: Text('Yourly'),
         ),
-        drawer: Menu(),
         body: TabBarView(
           children: [
-            TimelinePage(),
-            HackerNewsPage(),
-            GithubTrendingPage(),
-            GithubTrendingPage(
-              language: 'c%23',
+            GenericArticlePage(
+              articleProviderName: "timeline",
             ),
-            GithubTrendingPage(
-              language: 'dart',
+            //TimelinePage(),
+            GenericArticlePage(
+              articleProviderName: "hackernews-news",
             ),
+            GenericArticlePage(
+              articleProviderName: "github-trending",
+            ),
+            GenericArticlePage(
+              articleProviderName: "github-trending-csharp",
+            ),
+            GenericArticlePage(
+              articleProviderName: "github-trending-dart",
+            )
+            // GithubTrendingPage(),
+            // GithubTrendingPage(
+            //   language: 'c%23',
+            // ),
+            // GithubTrendingPage(
+            //   language: 'dart',
+            // ),
           ],
         ),
       ),
