@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 import 'package:yourly/providers/github/github.dart';
 
 class GithubTrendingProviderApi extends AbstractProviderApi {
-  static final http.Client httpClient = http.Client();
-
   GithubTrendingProviderApi(ArticleProviderConfiguration configuration)
       : super(configuration: configuration);
+
+  static final http.Client httpClient = http.Client();
 
   @override
   Future<List<dynamic>> fetch(int page) async {
@@ -30,8 +30,10 @@ class GithubTrendingProviderApi extends AbstractProviderApi {
   }
 
   @override
-  Widget render(BuildContext buildContext, rawObject) {
+  Widget render(BuildContext buildContext, rawObject,
+      GestureTapCallback onDoubleTap, Function onRefresh) {
     return GithubTrendingArticleComponent(
+        onDoubleTap: onDoubleTap,
         model: GithubTrendingArticleModel.fromRawObject(rawObject));
   }
 }

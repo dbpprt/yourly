@@ -8,5 +8,6 @@ abstract class AbstractProviderApi {
 
   Future<List<dynamic>> fetch(int page);
 
-  Widget render(BuildContext buildContext, dynamic rawObject);
+  Widget render(BuildContext buildContext, dynamic rawObject,
+      GestureTapCallback onDoubleTap, Function onRefresh);
 }

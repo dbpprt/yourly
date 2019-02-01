@@ -30,8 +30,10 @@ class HackernewsProviderApi extends AbstractProviderApi {
   }
 
   @override
-  Widget render(BuildContext buildContext, rawObject) {
+  Widget render(BuildContext buildContext, rawObject,
+      GestureTapCallback onDoubleTap, Function onRefresh) {
     return HackernewsArticleComponent(
+        onDoubleTap: onDoubleTap,
         model: HackernewsArticleModel.fromRawObject(rawObject));
   }
 }

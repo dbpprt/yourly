@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yourly/pages/generic_article_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:yourly/pages/timeline.dart';
 
 class Homepage extends StatelessWidget {
   Widget tab(String text, IconData icon) {
@@ -33,7 +32,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 5,
       initialIndex: 1,
       child: Scaffold(
         appBar: AppBar(
@@ -46,24 +45,32 @@ class Homepage extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              //Tab(child: tab("Timeline", FontAwesomeIcons.history)),
-              Tab(child: tab("Github", FontAwesomeIcons.github)),
+              Tab(child: tab("Timeline", FontAwesomeIcons.history)),
               Tab(child: tab("Hackernews", FontAwesomeIcons.yCombinator)),
-              // Tab(child: tab("Trending", FontAwesomeIcons.github)),
-              // Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
-              // Tab(child: tab("Trending Dart", FontAwesomeIcons.github)),
+              Tab(child: tab("Trending", FontAwesomeIcons.github)),
+              Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
+              Tab(child: tab("Trending Dart", FontAwesomeIcons.github)),
             ],
           ),
           title: Text('Yourly'),
         ),
         body: TabBarView(
           children: [
+            GenericArticlePage(
+              articleProviderName: "timeline",
+            ),
             //TimelinePage(),
+            GenericArticlePage(
+              articleProviderName: "hackernews-news",
+            ),
             GenericArticlePage(
               articleProviderName: "github-trending",
             ),
             GenericArticlePage(
-              articleProviderName: "hackernews-news",
+              articleProviderName: "github-trending-csharp",
+            ),
+            GenericArticlePage(
+              articleProviderName: "github-trending-dart",
             )
             // GithubTrendingPage(),
             // GithubTrendingPage(

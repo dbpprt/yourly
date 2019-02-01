@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:yourly/components/article_gesture_detector.dart';
 import 'package:yourly/providers/hackernews/hackernews.dart';
 
 class HackernewsArticleComponent extends StatelessWidget {
-  final HackernewsArticleModel model;
-  final GestureTapCallback onDoubleTap;
-
   const HackernewsArticleComponent(
       {Key key, @required this.model, this.onDoubleTap})
       : super(key: key);
+
+  final HackernewsArticleModel model;
+  final GestureTapCallback onDoubleTap;
 
   Widget actionRow(HackernewsArticleModel post) => Padding(
         padding: const EdgeInsets.only(right: 30.0),
@@ -133,7 +134,9 @@ class HackernewsArticleComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ArticleGestureDetector(
+      model: model,
+      onDoubleTap: onDoubleTap,
       child: Card(
         color: Colors.grey.shade900,
         child: Padding(

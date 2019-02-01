@@ -1,19 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:yourly/database/database.dart';
+import 'package:yourly/providers/abstract_provider_model.dart';
 
-class GithubTrendingArticleModel extends Equatable {
-  final String author;
-  final String name;
-  final String url;
-  final String description;
-  final String language;
-  final String languageColor;
-  final int stars;
-  final int forks;
-  final int currentPeriodStars;
-  final String builtByAvatar;
-  final String builtByUsername;
-  final dynamic rawObject;
-
+class GithubTrendingArticleModel extends Equatable
+    implements AbstractProviderModel {
   GithubTrendingArticleModel(
       {this.author,
       this.name,
@@ -28,6 +18,44 @@ class GithubTrendingArticleModel extends Equatable {
       this.builtByUsername,
       this.rawObject})
       : super([name]);
+
+  final String author;
+  final String builtByAvatar;
+  final String builtByUsername;
+  final int currentPeriodStars;
+  final String description;
+  final int forks;
+  final String language;
+  final String languageColor;
+  final String name;
+  final dynamic rawObject;
+  final int stars;
+  final String url;
+
+  @override
+  String getLaunchUrl() {
+    return url;
+  }
+
+  @override
+  String getProviderName() {
+    return "github";
+  }
+
+  @override
+  dynamic getRawObject() {
+    return rawObject;
+  }
+
+  @override
+  String getTitle() {
+    return name;
+  }
+
+  @override
+  SavedArticle toSavedArticle() {
+    return null;
+  }
 
   static GithubTrendingArticleModel fromRawObject(dynamic rawObject) {
     return GithubTrendingArticleModel(

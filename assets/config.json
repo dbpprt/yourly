@@ -8,6 +8,20 @@
       "icon": "github"
     },
     {
+      "provider": "github",
+      "name": "github-trending-dart",
+      "url": "https://github-trending-api.now.sh/repositories?language=dart",
+      "displayName": "Trending Dart",
+      "icon": "github"
+    },
+    {
+      "provider": "github",
+      "name": "github-trending-csharp",
+      "url": "https://github-trending-api.now.sh/repositories?language=c%23",
+      "displayName": "Trending C#",
+      "icon": "github"
+    },
+    {
       "provider": "hackernews",
       "name": "hackernews-news",
       "url": "https://api.hnpwa.com/v0/news/{page}.json",

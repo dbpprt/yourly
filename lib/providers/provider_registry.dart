@@ -3,6 +3,7 @@ import 'package:yourly/config.dart';
 import 'package:yourly/providers/abstract_provider_api.dart';
 import 'package:yourly/providers/github/github.dart';
 import 'package:yourly/providers/hackernews/hackernews.dart';
+import 'package:yourly/providers/timeline/timeline.dart';
 
 class Provider {
   AbstractProviderApi api;
@@ -39,6 +40,10 @@ class ProviderRegistry {
           break;
       }
     }
+
+    _providers.putIfAbsent("timeline", () {
+      return Provider(api: TimelineProviderApi(null, providers: _providers));
+    });
 
     isInitialized = true;
   }

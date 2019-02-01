@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:yourly/components/article_gesture_detector.dart';
 import 'package:yourly/providers/github/github_trending_article_model.dart';
 
 class GithubTrendingArticleComponent extends StatelessWidget {
-  final GithubTrendingArticleModel model;
-  final GestureTapCallback onDoubleTap;
-
   const GithubTrendingArticleComponent(
       {Key key, @required this.model, this.onDoubleTap})
       : super(key: key);
+
+  final GithubTrendingArticleModel model;
+  final GestureTapCallback onDoubleTap;
 
   static int _getColorFromHex(String hexColor) {
     if (hexColor == null) {
@@ -167,34 +168,36 @@ class GithubTrendingArticleComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ArticleGestureDetector(
+        model: model,
+        onDoubleTap: onDoubleTap,
         child: Card(
-      color: Colors.grey.shade900,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+          color: Colors.grey.shade900,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
               children: <Widget>[
-                CircleAvatar(
-                    radius: 25.0,
-                    backgroundImage: NetworkImage(
-                      model.builtByAvatar
-                              .replaceAll("github.com", "github.com.rsz.io") +
-                          '?width=30',
-                    )),
-                rightColumn(model),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    CircleAvatar(
+                        radius: 25.0,
+                        backgroundImage: NetworkImage(
+                          model.builtByAvatar.replaceAll(
+                                  "github.com", "github.com.rsz.io") +
+                              '?width=30',
+                        )),
+                    rightColumn(model),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 30),
+                  child: actionRow(model),
+                ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 30),
-              child: actionRow(model),
-            ),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }

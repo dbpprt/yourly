@@ -22,6 +22,7 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
     _scrollController.addListener(_onScroll);
   }
 
+  int articleCount = 0;
   String articleProviderName;
 
   ArticleBloc _articleBloc;
@@ -62,7 +63,7 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
   void _onScroll() {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
-    if (maxScroll - currentScroll <= _scrollThreshold) {
+    if (maxScroll - currentScroll <= _scrollThreshold && articleCount > 4) {
       _articleBloc.dispatch(Fetch());
     }
   }
@@ -97,9 +98,17 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
               }
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  return index >= state.articles.length
-                      ? BottomLoader()
-                      : _provider.api.render(context, state.articles[index]);
+                  articleCount = state.articles.length;
+
+                  if (index >= state.articles.length) {
+                    if (articleCount < 5) {
+                      return Container();
+                    }
+                    return BottomLoader();
+                  }
+
+                  return _provider.api.render(
+                      context, state.articles[index], null, _handleRefresh);
                 },
                 itemCount: state.hasReachedMax
                     ? state.articles.length

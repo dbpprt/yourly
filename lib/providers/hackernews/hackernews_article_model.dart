@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:yourly/database/database.dart';
+import 'package:yourly/providers/abstract_provider_model.dart';
 
-class HackernewsArticleModel extends Equatable {
+class HackernewsArticleModel extends Equatable
+    implements AbstractProviderModel {
   HackernewsArticleModel(
       {this.id,
       this.title,
@@ -26,6 +29,31 @@ class HackernewsArticleModel extends Equatable {
   final String type;
   final String url;
   final String user;
+
+  @override
+  String getLaunchUrl() {
+    return url;
+  }
+
+  @override
+  String getProviderName() {
+    return "hackernews";
+  }
+
+  @override
+  dynamic getRawObject() {
+    return rawObject;
+  }
+
+  @override
+  String getTitle() {
+    return title;
+  }
+
+  @override
+  SavedArticle toSavedArticle() {
+    return null;
+  }
 
   static HackernewsArticleModel fromRawObject(dynamic rawObject) {
     return HackernewsArticleModel(
