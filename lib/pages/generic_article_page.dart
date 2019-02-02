@@ -96,6 +96,7 @@ class _GenericArticlePageState extends State<GenericArticlePage> {
                   child: Text('no posts'),
                 );
               }
+
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   articleCount = state.articles.length;
