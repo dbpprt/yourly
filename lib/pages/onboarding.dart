@@ -15,12 +15,15 @@ class OnboardingPage extends StatelessWidget {
           fontSize: 34.0,
         ),
       ),
-      body: Text(
-        'Your favorite news at a glance',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18.0,
+      body: Padding(
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: Text(
+          'Your favorite news at a glance',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
         ),
       ),
       iconAssetPath: 'assets/empty.png',
@@ -34,13 +37,17 @@ class OnboardingPage extends StatelessWidget {
               color: Colors.white,
               fontSize: 34.0,
             )),
-        body: Text(
-            'Tap to open, double tap to open in your browser and long press to archive',
+        body: Padding(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          child: Text(
+            'Tap to open, double tap to open in browser, long press to archive',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,
-            )),
+            ),
+          ),
+        ),
         iconAssetPath: 'assets/empty.png'),
     PageModel(
       color: const Color(0xFF9B90BC),
@@ -51,12 +58,17 @@ class OnboardingPage extends StatelessWidget {
             color: Colors.white,
             fontSize: 34.0,
           )),
-      body: Text('Feel free to give me a pull request on GitHub',
+      body: Padding(
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: Text(
+          'Feel free to give me a pull request on GitHub',
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
-          )),
+          ),
+        ),
+      ),
       iconAssetPath: 'assets/empty.png',
     ),
   ];
