@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:yourly/database/database.dart';
 import 'package:yourly/providers/abstract_provider_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,6 +51,14 @@ class ArticleGestureDetector extends StatelessWidget {
     await SavedArticlesDatabaseRepository(DatabaseProvider.get).insert(
         SavedArticle(model.getProviderName(), json.encode(model.getRawObject()),
             DateTime.now().millisecondsSinceEpoch, model.getLaunchUrl()));
+
+    Fluttertoast.showToast(
+        msg: "Archived",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        textColor: Colors.black87,
+        fontSize: 16.0);
   }
 
   onLongPressHandler(BuildContext context) {

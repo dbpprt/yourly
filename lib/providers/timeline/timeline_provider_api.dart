@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +32,7 @@ class TimelineProviderApi extends AbstractProviderApi {
     final provider = providers.values.firstWhere(
         (_) => _.api.configuration.provider == article.providerName);
 
-    if (provider != null) {
+    if (Random().nextInt(3) == 1) {
       return provider.api.render(
         buildContext,
         json.decode(article.data),

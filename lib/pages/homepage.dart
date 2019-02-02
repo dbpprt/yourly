@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yourly/components/components.dart';
 import 'package:yourly/pages/generic_article_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -35,6 +36,7 @@ class Homepage extends StatelessWidget {
       length: 5,
       initialIndex: 1,
       child: Scaffold(
+        drawer: YourlyDrawer(),
         appBar: AppBar(
           actions: <Widget>[
             IconButton(
@@ -83,15 +85,5 @@ class Homepage extends StatelessWidget {
         ),
       ),
     );
-
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text('Home Page'),
-    //   ),
-    //   drawer: XmobeMenu(),
-    //   body: Center(
-    //     child: Text('Home Page content here'),
-    //   ),
-    // );
   }
 }
