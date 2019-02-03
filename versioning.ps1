@@ -5,12 +5,7 @@ if (!$buildId) {
 }
 
 $pubspec = Get-Content ./pubspec.yaml -Raw
-
-if (!$pubspec -match "^version: (\d+\.)?(\d+\.)?(\*|\d+)") {
-    Write-Error "unable to find correct version string"
-    exit -1
-}
-
+$match = $pubspec -match "version: (\d+\.)?(\d+\.)?(\*|\d+)"
 $versionRow = $Matches[0].Trim()
 
 if ($versionRow.EndsWith(".0") -eq $false) {
