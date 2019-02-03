@@ -44,12 +44,17 @@ class YourlyDrawerState extends State<YourlyDrawer> {
                   leading: Icon(FontAwesomeIcons.cog),
                   title: Text("Settings"),
                   trailing: Icon(FontAwesomeIcons.arrowRight),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, '/settings');
+                  },
                 ),
                 ListTile(
                   leading: Icon(FontAwesomeIcons.github),
                   title: Text("About"),
                   trailing: Icon(FontAwesomeIcons.arrowRight),
                   onTap: () {
+                    Navigator.of(context).pop();
                     launch("https://www.github.com/dennisbappert/yourly");
                   },
                 ),
@@ -58,6 +63,7 @@ class YourlyDrawerState extends State<YourlyDrawer> {
                   title: Text("Help"),
                   trailing: Icon(FontAwesomeIcons.arrowRight),
                   onTap: () {
+                    Navigator.of(context).pop();
                     Navigator.pushNamed(context, '/help');
                   },
                 ),

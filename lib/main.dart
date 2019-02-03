@@ -5,6 +5,7 @@ import 'package:yourly/pages/onboarding.dart';
 import 'package:intl/intl.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:yourly/pages/settings.dart';
 
 void main() => runApp(new MyApp());
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         //Add Route to the main Page.
         routes: {
           '/main': (context) => Homepage(),
+          '/settings': (context) => SettingsPage(),
           '/help': (context) => OnboardingPage(),
         },
         home: OnboardingInitializer(
