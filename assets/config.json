@@ -27,6 +27,20 @@
       "url": "https://api.hnpwa.com/v0/news/{page}.json",
       "displayName": "HN",
       "icon": "ycombinator"
+    },
+    {
+      "provider": "rss",
+      "name": "rss-golem-all",
+      "url": "https://rss.golem.de/rss.php?feed=RSS2.0",
+      "displayName": "Golem",
+      "icon": "news"
+    },
+    {
+      "provider": "rss",
+      "name": "rss-heise-all",
+      "url": "https://www.heise.de/rss/heise.rdf",
+      "displayName": "Heise",
+      "icon": "news"
     }
   ]
 }

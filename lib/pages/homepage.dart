@@ -8,7 +8,7 @@ class Homepage extends StatelessWidget {
     return Row(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(right: 3),
+          padding: EdgeInsets.only(right: 5),
           child: Icon(
             icon,
             size: 18.0,
@@ -48,6 +48,8 @@ class Homepage extends StatelessWidget {
             isScrollable: true,
             tabs: [
               Tab(child: tab("Timeline", FontAwesomeIcons.history)),
+              Tab(child: tab("Golem", FontAwesomeIcons.newspaper)),
+              Tab(child: tab("Heise", FontAwesomeIcons.newspaper)),
               Tab(child: tab("Hackernews", FontAwesomeIcons.yCombinator)),
               Tab(child: tab("Trending", FontAwesomeIcons.github)),
               Tab(child: tab("Trending C#", FontAwesomeIcons.github)),
@@ -62,6 +64,12 @@ class Homepage extends StatelessWidget {
               articleProviderName: "timeline",
             ),
             //TimelinePage(),
+            GenericArticlePage(
+              articleProviderName: "rss-golem-all",
+            ),
+            GenericArticlePage(
+              articleProviderName: "rss-heise-all",
+            ),
             GenericArticlePage(
               articleProviderName: "hackernews-news",
             ),

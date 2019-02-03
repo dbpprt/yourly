@@ -50,6 +50,28 @@ class OnboardingPage extends StatelessWidget {
         ),
         iconAssetPath: 'assets/empty.png'),
     PageModel(
+      color: const Color(0xff5252),
+      heroAssetPath: 'assets/onboarding03.png',
+      title: Text('Privacy first',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            color: Colors.white,
+            fontSize: 34.0,
+          )),
+      body: Padding(
+        padding: EdgeInsets.only(left: 20, right: 20),
+        child: Text(
+          'No login, no tracking, no ads, no telemetry, no bullshit',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+        ),
+      ),
+      iconAssetPath: 'assets/empty.png',
+    ),
+    PageModel(
       color: const Color(0xFF9B90BC),
       heroAssetPath: 'assets/onboarding02.png',
       title: Text('Open Source',
