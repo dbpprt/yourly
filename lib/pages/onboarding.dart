@@ -50,7 +50,7 @@ class OnboardingPage extends StatelessWidget {
         ),
         iconAssetPath: 'assets/empty.png'),
     PageModel(
-      color: const Color(0xff5252),
+      color: const Color(0xFF5252BC),
       heroAssetPath: 'assets/onboarding03.png',
       title: Text('Privacy first',
           style: TextStyle(

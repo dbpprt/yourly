@@ -21,7 +21,21 @@ class RssProviderApi extends AbstractProviderApi {
 
     final response = await httpClient.get(url);
     if (response.statusCode == 200) {
-      final data = RssFeed.parse(response.body).items;
+      final feedItems = RssFeed.parse(response.body).items;
+      final data = List<Map<String, dynamic>>();
+
+      for (var feedItem in feedItems) {
+        data.add({
+          "guid": feedItem.guid,
+          "title": feedItem.title,
+          "description": feedItem.description,
+          "pubDate": feedItem.pubDate,
+          "type": 'rssitem',
+          "url": feedItem.link,
+          "imageUrl": feedItem.content.images.first
+        });
+      }
+
       return data;
     } else {
       throw Exception('error fetching articles');

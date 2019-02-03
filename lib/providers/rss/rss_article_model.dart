@@ -45,16 +45,14 @@ class RssArticleModel extends Equatable implements AbstractProviderModel {
   }
 
   static RssArticleModel fromRawObject(dynamic rawObject) {
-    final model = rawObject as RssItem;
-
     return RssArticleModel(
-        guid: model.guid,
-        imageUrl: model.content.images.first,
-        title: model.title,
-        description: model.description,
-        pubDate: model.pubDate,
-        type: 'rssitem',
-        url: model.link,
+        guid: rawObject["guid"],
+        imageUrl: rawObject["imageUrl"],
+        title: rawObject["title"],
+        description: rawObject["description"],
+        pubDate: rawObject["pubDate"],
+        type: rawObject["type"],
+        url: rawObject["url"],
         rawObject: rawObject);
   }
 }
