@@ -1,18 +1,36 @@
-[
-  {
-    "provider": "rss",
-    "name": "rss-golem-all",
-    "url": "https://rss.golem.de/rss.php?feed=RSS2.0",
-    "displayName": "Golem",
-    "icon": "news",
-    "group": "RSS"
-  },
-  {
-    "provider": "rss",
-    "name": "rss-heise-all",
-    "url": "https://www.heise.de/rss/heise.rdf",
-    "displayName": "Heise",
-    "icon": "news",
-    "group": "RSS"
-  }
-]
+{
+  "providers": [
+    {
+      "provider": "github",
+      "name": "github-trending",
+      "url": "https://github-trending-api.now.sh/repositories",
+      "displayName": "Trending",
+      "icon": "github",
+      "group": "Github Trending"
+    },
+    {
+      "provider": "github",
+      "name": "github-trending-dart",
+      "url": "https://github-trending-api.now.sh/repositories?language=dart",
+      "displayName": "Trending Dart",
+      "icon": "github",
+      "group": "Github Trending"
+    },
+    {
+      "provider": "github",
+      "name": "github-trending-csharp",
+      "url": "https://github-trending-api.now.sh/repositories?language=c%23",
+      "displayName": "Trending C#",
+      "icon": "github",
+      "group": "Github Trending"
+    },
+    {
+      "provider": "hackernews",
+      "name": "hackernews-news",
+      "url": "https://api.hnpwa.com/v0/news/{page}.json",
+      "displayName": "HN",
+      "icon": "ycombinator",
+      "group": "Hackernews"
+    }
+  ]
+}
