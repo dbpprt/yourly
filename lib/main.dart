@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:yourly/components/components.dart';
 import 'package:yourly/pages/homepage.dart';
 import 'package:yourly/pages/onboarding.dart';
+import 'package:intl/intl.dart';
+
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Intl.defaultLocale = 'en_US';
+
+    Future.wait([
+      initializeDateFormatting('en', null),
+    ]);
+
     return new MaterialApp(
         title: 'Yourly',
         theme: new ThemeData(

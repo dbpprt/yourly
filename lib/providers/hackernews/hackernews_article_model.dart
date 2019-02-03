@@ -50,11 +50,6 @@ class HackernewsArticleModel extends Equatable
     return title;
   }
 
-  @override
-  SavedArticle toSavedArticle() {
-    return null;
-  }
-
   static HackernewsArticleModel fromRawObject(dynamic rawObject) {
     return HackernewsArticleModel(
         id: rawObject["id"],

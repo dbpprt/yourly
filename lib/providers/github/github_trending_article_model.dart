@@ -52,11 +52,6 @@ class GithubTrendingArticleModel extends Equatable
     return name;
   }
 
-  @override
-  SavedArticle toSavedArticle() {
-    return null;
-  }
-
   static GithubTrendingArticleModel fromRawObject(dynamic rawObject) {
     return GithubTrendingArticleModel(
         author: rawObject["author"],

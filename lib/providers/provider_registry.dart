@@ -3,6 +3,7 @@ import 'package:yourly/config.dart';
 import 'package:yourly/providers/abstract_provider_api.dart';
 import 'package:yourly/providers/github/github.dart';
 import 'package:yourly/providers/hackernews/hackernews.dart';
+import 'package:yourly/providers/rss/rss.dart';
 import 'package:yourly/providers/timeline/timeline.dart';
 
 class Provider {
@@ -36,6 +37,12 @@ class ProviderRegistry {
         case "hackernews":
           _providers.putIfAbsent(providerConfig.name, () {
             return Provider(api: HackernewsProviderApi(providerConfig));
+          });
+          break;
+
+        case "rss":
+          _providers.putIfAbsent(providerConfig.name, () {
+            return Provider(api: RssProviderApi(providerConfig));
           });
           break;
       }

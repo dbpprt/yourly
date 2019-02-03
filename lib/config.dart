@@ -10,9 +10,15 @@ class ArticleProviderConfiguration extends Equatable {
 
   final String displayName;
   final String icon;
+  final String group;
 
   ArticleProviderConfiguration(
-      {this.name, this.provider, this.url, this.displayName, this.icon})
+      {this.name,
+      this.provider,
+      this.url,
+      this.displayName,
+      this.icon,
+      this.group})
       : super([name]);
 }
 
@@ -44,11 +50,13 @@ class ConfigurationProvider {
     for (var rawProvider in rawConfig['providers']) {
       _config.providers.add(
         ArticleProviderConfiguration(
-            icon: rawProvider["icon"],
-            name: rawProvider["name"],
-            provider: rawProvider["provider"],
-            displayName: rawProvider["displayName"],
-            url: rawProvider["url"]),
+          icon: rawProvider["icon"],
+          name: rawProvider["name"],
+          provider: rawProvider["provider"],
+          displayName: rawProvider["displayName"],
+          url: rawProvider["url"],
+          group: rawProvider["group"],
+        ),
       );
     }
 

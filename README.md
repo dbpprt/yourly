@@ -9,6 +9,7 @@ I read the same pages every morning and so far I have not found a good news read
 ## Features 👍
 
 - Supports Ycombinator news, Github Trending (+ C#, + Dart)
+- RSS 2 Support (all feeds are stored in assets/rss.json)
 - Long press to open the article in-app
 - Double tap to archive the article
 - Tap to open in the default browser
@@ -17,18 +18,26 @@ I read the same pages every morning and so far I have not found a good news read
 - Pull to refresh
 - This project shows the power of Azure DevOps which is used for CI / CD
 - Builds are currently distributed for Android only on Visual Studio App Center
+- Sexy on-boarding page
 
 ## Roadmap 🚧
 
-- Code cleanup, abstractions for certain functionalities, dedup the code
+- ~~Code cleanup, abstractions for certain functionalities, dedup the code~~
 - Implement search functionality
 - Display the timeline as a real timeline (grouped by day)
-- Make tabs configurable
+- Make tabs configurable, choose your news providers and sort them
 - Push to PlayStore
+- F-Droid
 - ~~Implement CI builds~~
 - Add a release to GitHub releases
 - Simple web interface to access all saved articles
 - ~~(basic understanding how flutter works)~~
+
+## Add your own RSS feed ✔️
+- Just fork the repository, add your own feed to assets/rss.json and create a PR
+
+## Help wanted 🆘
+- I'm searching for iOS maintainers
 
 ## Warning ⚠️
 
