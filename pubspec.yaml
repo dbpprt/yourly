@@ -28,6 +28,7 @@ dependencies:
   webfeed: ^0.4.2
   auto_size_text: ^0.3.0
   intl: ^0.15.7
+  collection: ^1.14.11
 
   cupertino_icons: ^0.1.2
 
@@ -45,5 +46,3 @@ flutter:
     - assets/onboarding01.png
     - assets/onboarding02.png
     - assets/onboarding03.png
-
-

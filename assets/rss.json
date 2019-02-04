@@ -5,7 +5,8 @@
     "url": "https://rss.golem.de/rss.php?feed=RSS2.0",
     "displayName": "Golem",
     "icon": "news",
-    "group": "RSS"
+    "group": "German feeds",
+    "settingDisplayName": "Golem.de"
   },
   {
     "provider": "rss",
@@ -13,6 +14,7 @@
     "url": "https://www.heise.de/rss/heise.rdf",
     "displayName": "Heise",
     "icon": "news",
-    "group": "RSS"
+    "group": "German feeds",
+    "settingDisplayName": "Heise.de"
   }
 ]

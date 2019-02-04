@@ -6,7 +6,8 @@
       "url": "https://github-trending-api.now.sh/repositories",
       "displayName": "Trending",
       "icon": "github",
-      "group": "Github Trending"
+      "group": "Github Trending",
+      "settingDisplayName": "Github Trending"
     },
     {
       "provider": "github",
@@ -14,7 +15,8 @@
       "url": "https://github-trending-api.now.sh/repositories?language=dart",
       "displayName": "Trending Dart",
       "icon": "github",
-      "group": "Github Trending"
+      "group": "Github Trending",
+      "settingDisplayName": "Github Trending Dart"
     },
     {
       "provider": "github",
@@ -22,7 +24,8 @@
       "url": "https://github-trending-api.now.sh/repositories?language=c%23",
       "displayName": "Trending C#",
       "icon": "github",
-      "group": "Github Trending"
+      "group": "Github Trending",
+      "settingDisplayName": "Github Trending C#"
     },
     {
       "provider": "hackernews",
@@ -30,7 +33,8 @@
       "url": "https://api.hnpwa.com/v0/news/{page}.json",
       "displayName": "HN",
       "icon": "ycombinator",
-      "group": "Hackernews"
+      "group": "Hackernews",
+      "settingDisplayName": "HackerNews"
     }
   ]
 }

@@ -10,6 +10,7 @@ class ArticleProviderConfiguration extends Equatable {
   final String url;
 
   final String displayName;
+  final String settingDisplayName;
   final String icon;
   final String group;
 
@@ -18,6 +19,7 @@ class ArticleProviderConfiguration extends Equatable {
       this.provider,
       this.url,
       this.displayName,
+      this.settingDisplayName,
       this.icon,
       this.group})
       : super([name]);
@@ -64,6 +66,7 @@ class ConfigurationProvider {
           name: rawProvider["name"],
           provider: rawProvider["provider"],
           displayName: rawProvider["displayName"],
+          settingDisplayName: rawProvider["settingDisplayName"],
           url: rawProvider["url"],
           group: rawProvider["group"],
         ),
