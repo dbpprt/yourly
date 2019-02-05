@@ -7,9 +7,11 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:yourly/pages/settings.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new RestartWidget(
+      child: new YourlyApp(),
+    ));
 
-class MyApp extends StatelessWidget {
+class YourlyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'en_US';
