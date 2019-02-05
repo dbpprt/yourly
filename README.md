@@ -25,7 +25,7 @@ I read the same pages every morning and so far I have not found a good news read
 - ~~Code cleanup, abstractions for certain functionalities, dedup the code~~
 - Implement search functionality
 - Display the timeline as a real timeline (grouped by day)
-- Make tabs configurable, choose your news providers and sort them
+- ~~Make tabs configurable, choose your news providers and sort them~~
 - Push to PlayStore
 - F-Droid
 - ~~Implement CI builds~~
