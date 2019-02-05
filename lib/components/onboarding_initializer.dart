@@ -62,11 +62,9 @@ class OnboardingInitializer extends StatelessWidget {
                       child: onboarding,
                     );
             }
-
-          // else {
-          //   return new ErrorScreen(error: snapshot.error);
-          // }
         }
+
+        return Container();
       },
     );
   }

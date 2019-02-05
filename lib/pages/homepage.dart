@@ -25,6 +25,16 @@ class HomepageState extends State<Homepage> {
       final preferences = await SharedPreferences.getInstance();
       var activeProviders = preferences.getStringList("active_providers");
 
+      if (activeProviders == null || activeProviders.length == 0) {
+        activeProviders = [
+          "hackernews-news",
+          "github-trending",
+          "github-trending-dart"
+        ];
+
+        await preferences.setStringList("active_providers", activeProviders);
+      }
+
       setState(() {
         _configuration = configuration;
         _activeProviders = activeProviders;
