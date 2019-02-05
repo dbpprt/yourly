@@ -15,6 +15,7 @@ class Homepage extends StatefulWidget {
 class HomepageState extends State<Homepage> {
   AppConfiguration _configuration;
   List<String> _activeProviders;
+  int _previousTabCount = -1;
 
   @override
   void initState() {
@@ -106,6 +107,14 @@ class HomepageState extends State<Homepage> {
         );
       }
     }
+
+    Future.delayed(Duration(milliseconds: 1)).then((_) {
+      if (_previousTabCount != -1 && tabs.length != _previousTabCount) {
+        RestartWidget.restartApp(context);
+      }
+
+      _previousTabCount = tabs.length;
+    });
 
     return DefaultTabController(
       length: tabs.length,
