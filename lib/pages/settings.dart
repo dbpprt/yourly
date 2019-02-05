@@ -25,12 +25,9 @@ class SettingsPageState extends State<SettingsPage> {
       final preferences = await SharedPreferences.getInstance();
       var activeProviders = preferences.getStringList("active_providers");
 
-      if (activeProviders == null || activeProviders.length == 0) {
-        activeProviders = [
-          "hackernews-news",
-          "github-trending",
-          "github-trending-dart"
-        ];
+      if (activeProviders == null) {
+        // this should actually never happen
+        activeProviders = new List<String>();
       }
 
       setState(() {
