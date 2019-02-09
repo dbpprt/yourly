@@ -4,6 +4,7 @@ import 'package:yourly/components/components.dart';
 import 'package:yourly/config.dart';
 import 'package:yourly/pages/generic_article_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:icons_helper/icons_helper.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -96,8 +97,8 @@ class HomepageState extends State<Homepage> {
       if (providerConfig != null) {
         tabs.add(
           Tab(
-              child:
-                  tab(providerConfig.displayName, FontAwesomeIcons.newspaper)),
+              child: tab(providerConfig.displayName,
+                  getIconGuessFavorFA(name: providerConfig.icon))),
         );
 
         tabContents.add(

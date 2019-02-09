@@ -4,7 +4,7 @@ description: Yet another news reader
 version: 1.0.0
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -29,6 +29,9 @@ dependencies:
   auto_size_text: ^0.3.0
   intl: ^0.15.7
   collection: ^1.14.11
+  icons_helper:
+    git:
+      url: git://github.com/dennisbappert/icons_helper
 
   cupertino_icons: ^0.1.2
 

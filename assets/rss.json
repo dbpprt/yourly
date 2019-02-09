@@ -4,7 +4,7 @@
     "name": "rss-golem-all",
     "url": "https://rss.golem.de/rss.php?feed=RSS2.0",
     "displayName": "Golem",
-    "icon": "news",
+    "icon": "newspaper",
     "group": "German feeds",
     "settingDisplayName": "Golem.de"
   },
@@ -13,8 +13,53 @@
     "name": "rss-heise-all",
     "url": "https://www.heise.de/rss/heise.rdf",
     "displayName": "Heise",
-    "icon": "news",
+    "icon": "newspaper",
     "group": "German feeds",
     "settingDisplayName": "Heise.de"
+  },
+  {
+    "provider": "rss",
+    "name": "rss-tagesschau",
+    "url": "http://www.tagesschau.de/xml/rss2",
+    "displayName": "Tagesschau",
+    "icon": "newspaper",
+    "group": "German feeds",
+    "settingDisplayName": "Tagesschau"
+  },
+  {
+    "provider": "rss",
+    "name": "rss-googlenews-world",
+    "url": "https://news.google.com/news/rss/headlines/section/topic/WORLD?ned=us&hl=en",
+    "displayName": "Google News",
+    "icon": "newspaper",
+    "group": "Global news",
+    "settingDisplayName": "Google News - World News"
+  },
+  {
+    "provider": "rss",
+    "name": "rss-nytimes",
+    "url": "https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml",
+    "displayName": "NY Times",
+    "icon": "newspaper",
+    "group": "Global news",
+    "settingDisplayName": "New York Times - World News"
+  },
+  {
+    "provider": "rss",
+    "name": "rss-theguardian",
+    "url": "https://www.theguardian.com/world/rss",
+    "displayName": "Guardian",
+    "icon": "newspaper",
+    "group": "Global news",
+    "settingDisplayName": "Guardian - World News"
+  },
+  {
+    "provider": "rss",
+    "name": "rss-spiegelonline",
+    "url": "http://www.spiegel.de/international/index.rss",
+    "displayName": "Spiegel Online",
+    "icon": "newspaper",
+    "group": "Global news",
+    "settingDisplayName": "Spiegel Online International"
   }
 ]
