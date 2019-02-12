@@ -32,7 +32,10 @@ class RssProviderApi extends AbstractProviderApi {
           "pubDate": feedItem.pubDate,
           "type": 'rssitem',
           "url": feedItem.link,
-          "imageUrl": feedItem.content.images.first
+          "imageUrl": feedItem.content.images != null &&
+                  feedItem.content.images.isNotEmpty
+              ? feedItem.content.images.first
+              : null
         });
       }
 

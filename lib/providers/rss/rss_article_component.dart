@@ -75,18 +75,20 @@ class RssArticleComponent extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Image(
-                            height: 150,
-                            width: 150,
-                            image: NetworkImage(
-                              model.imageUrl,
-                            )),
-                      ],
-                    ),
+                    model.imageUrl != null
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Image(
+                                  height: 150,
+                                  width: 150,
+                                  image: NetworkImage(
+                                    model.imageUrl,
+                                  )),
+                            ],
+                          )
+                        : Container(),
                     rightColumn(model),
                   ],
                 )
