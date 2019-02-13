@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:yourly/config.dart';
 import 'package:yourly/providers/abstract_provider_api.dart';
@@ -20,19 +22,21 @@ class RssProviderApi extends AbstractProviderApi {
     final url = configuration.url;
 
     final response = await httpClient.get(url);
+
     if (response.statusCode == 200) {
       final feedItems = RssFeed.parse(response.body).items;
       final data = List<Map<String, dynamic>>();
 
       for (var feedItem in feedItems) {
         data.add({
-          "guid": feedItem.guid,
+          "guid": feedItem.guid ?? feedItem.link,
           "title": feedItem.title,
           "description": feedItem.description,
           "pubDate": feedItem.pubDate,
           "type": 'rssitem',
           "url": feedItem.link,
-          "imageUrl": feedItem.content.images != null &&
+          "imageUrl": feedItem.content != null &&
+                  feedItem.content.images != null &&
                   feedItem.content.images.isNotEmpty
               ? feedItem.content.images.first
               : null
