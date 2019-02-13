@@ -35,6 +35,42 @@
       "icon": "yCombinator",
       "group": "Hackernews",
       "settingDisplayName": "HackerNews"
+    },
+    {
+      "provider": "hackernews",
+      "name": "hackernews-newewst",
+      "url": "https://api.hnpwa.com/v0/newest/{page}.json",
+      "displayName": "HN Newest",
+      "icon": "yCombinator",
+      "group": "Hackernews",
+      "settingDisplayName": "HackerNews Newest"
+    },
+    {
+      "provider": "hackernews",
+      "name": "hackernews-ask",
+      "url": "https://api.hnpwa.com/v0/ask/{page}.json",
+      "displayName": "HN Ask",
+      "icon": "yCombinator",
+      "group": "Hackernews",
+      "settingDisplayName": "HackerNews Ask"
+    },
+    {
+      "provider": "hackernews",
+      "name": "hackernews-show",
+      "url": "https://api.hnpwa.com/v0/show/{page}.json",
+      "displayName": "HN Show",
+      "icon": "yCombinator",
+      "group": "Hackernews",
+      "settingDisplayName": "HackerNews Show"
+    },
+    {
+      "provider": "hackernews",
+      "name": "hackernews-jobs",
+      "url": "https://api.hnpwa.com/v0/jobs/{page}.json",
+      "displayName": "HN Jobs",
+      "icon": "yCombinator",
+      "group": "Hackernews",
+      "settingDisplayName": "HackerNews Jobs"
     }
   ]
 }

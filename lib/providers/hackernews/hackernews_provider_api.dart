@@ -14,15 +14,12 @@ class HackernewsProviderApi extends AbstractProviderApi {
 
   @override
   Future<List<dynamic>> fetch(int page) async {
-    if (page != 1) {
-      return List<dynamic>();
-    }
-
     final url = configuration.url.replaceAll("{page}", page.toString());
 
-    final response = await httpClient.get(url);
+    final response = await httpClient
+        .get(url, headers: {'Content-Type': 'application/json; charset=utf-8'});
     if (response.statusCode == 200) {
-      final data = json.decode(response.body) as List;
+      final data = json.decode(utf8.decode(response.bodyBytes)) as List;
       return data;
     } else {
       throw Exception('error fetching articles');
